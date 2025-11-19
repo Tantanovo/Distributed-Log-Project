@@ -1,0 +1,27 @@
+# 编译产物目录
+/build/
+/bin/
+/logs/
+
+# 目标文件和静态库
+*.o
+*.a
+*.so
+*.dylib
+
+# CMake 生成的文件
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# 日志文件
+*.log
+
+# 编辑器相关文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
