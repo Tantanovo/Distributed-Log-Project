@@ -1,3 +1,4 @@
+//定义日志系统的通用类型、枚举或工具函数，比如日志级别（DEBUG、INFO、ERROR 等）、字符串格式化工具等。
 #ifndef log_common_hpp
 #define log_common_hpp
 namespace tulun{
@@ -13,24 +14,16 @@ namespace tulun{
         FATAL,
         NUM_LOG_LEVENS
     };
-    const char *LLTOSTR[]={
-        "TRACE",//0
-        "DEBUG",
-        "INFO",
-        "WARN",
-        "ERROR",
-        "FATAL",
-        "NUM_LOG_LEVENS"
-    };
+    extern const char *LLTOSTR[];
+    
     struct copytable{
-        copytable(copytable &){}
-        copytable &operator=(const copytable &){
-            return *this;
-        }
+        copytable() = default;
+        copytable(const copytable &)=default;
+        copytable &operator=(const copytable &)=default;
     };
     struct notcopy{
-        notcopy(const notcopy &)=delete;
-        notcopy &operator=(const notcopy &)=delete;
+        notcopy(const notcopy &)=default;
+        notcopy &operator=(const notcopy &)=default;
     };
 }
 #endif

@@ -4,6 +4,7 @@
 #include<time.h>//time 秒级
 //linux api
 #include<sys/time.h> 
+
 namespace tulun{
     //class timestamp{
         //uint64_t micro_;
