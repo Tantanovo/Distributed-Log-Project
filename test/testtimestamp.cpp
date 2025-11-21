@@ -5,6 +5,7 @@
 // c++ stl
 #include<appendfile.hpp>
 #include <iostream>
+#include"logfile.hpp"
 using namespace std;
 
 tulun::appendfile appfile("yhping.log");
@@ -37,7 +38,7 @@ int main()
     tulun::logger::setloglevel(tulun::LOG_LEVEL::TRACE);
            
          LOG_TRACE<< "in main";
-    func();
+         LOG_TRACE<< "exit main";
 
     return 0;
 }

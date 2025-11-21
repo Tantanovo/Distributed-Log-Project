@@ -9,18 +9,19 @@ namespace tulun
 {
     class logger
     {
-    public:
+    public://这是一个函数对象，它接受一个 const std::string& 类型的参数（即完整的日志字符串），
+         //并且没有返回值。用户可以通过 setoutput() 方法自定义日志的输出方式，
         using outputfunc = std::function<void(const std::string &)>;
         using flushfunc = std::function<void(void)>;
 
-        static outputfunc s_output_;
-        static flushfunc s_flush_;
+        static outputfunc s_output_;// 所有的 logger 实例都会使用这个全局函数来输出日志。
+        static flushfunc s_flush_;// 所有的 logger 实例都会使用这个全局函数来刷新日志。
 
-        static void setoutput(outputfunc);
-        static void setflush(flushfunc);
+        static void setoutput(outputfunc);//设置全局的日志输出函数。
+        static void setflush(flushfunc);//设置全局的日志刷新函数。
 
     private:
-        tulun::logmessage impl_;
+        tulun::logmessage impl_;//一个 logmessage 对象，负责实际的日志内容构建。
 
     public:
         logger(const tulun::LOG_LEVEL &level,
@@ -31,7 +32,7 @@ namespace tulun
         logmessage &stream();
 
     private:
-        static tulun::LOG_LEVEL s_level_;
+        static tulun::LOG_LEVEL s_level_;//静态成员变量，存储全局的日志级别。
 
     public:
         static void setloglevel(const tulun::LOG_LEVEL &level);
@@ -40,7 +41,7 @@ namespace tulun
 #define LOG_TRACE                                             \
     if (tulun::logger::getlevel() <= tulun::LOG_LEVEL::TRACE) \
     tulun::logger(tulun::LOG_LEVEL::TRACE, __FILE__, __func__, __LINE__).stream()
-#define LOG_EDBUG                                             \
+#define LOG_DEBUG                                             \
     if (tulun::logger::getlevel() <= tulun::LOG_LEVEL::DEBUG) \
     tulun::logger(tulun::LOG_LEVEL::DEBUG, __FILE__, __func__, __LINE__).stream()
 #define LOG_INFO                                             \

@@ -20,8 +20,8 @@ namespace tulun
     std::string timestamp::tostring() const
     {
         char buff[small_buff_len] = {0};
-        time_t sec = micro_ / kmircoperseconds;
-        time_t mir = micro_ % kmircoperseconds;
+        time_t sec = micro_ / kmircoperseconds;//秒
+        time_t mir = micro_ % kmircoperseconds;//微秒
         sprintf(buff, "%ld.%ld", sec, mir);
         return std::string(buff);
     };
@@ -32,17 +32,17 @@ namespace tulun
         time_t sec = micro_ / kmircoperseconds;
         time_t mir = micro_ % kmircoperseconds;
         struct tm t_tm;
-        localtime_r(&sec, &t_tm);
-        // gmtime_r(&sec,&t_tm);
+        localtime_r(&sec, &t_tm);//时间转换 
+        // gmtime_r(&sec,&t_tm);//格林尼治
         int len = sprintf(buff, "%04d/%02d/%02d-%02d:%02d:%02d", t_tm.tm_year + 1900,
                           t_tm.tm_mon + 1,
                           t_tm.tm_mday,
                           t_tm.tm_hour,
                           t_tm.tm_min,
                           t_tm.tm_sec);
-        if (showmicro)
-        {
-            sprintf(buff + len, ".%ldZ", mir);
+        if (showmicro)// 如果需要显示微秒，则在后面追加
+        {// buff + len 表示从缓冲区的当前末尾继续写入
+            sprintf(buff + len, ".%ldZ", mir);// Z 表示祖鲁时间 (UTC)，但这里实际是本地时间
         }
         return std::string(buff);
     };
