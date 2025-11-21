@@ -11,7 +11,7 @@ namespace tulun
 
     static tulun::LOG_LEVEL initloglevel()
     {
-        if (::getenv("TULUN::LOG_TRACE"))
+        if (::getenv("TULUN::LOG_TRACE"))//// 检查是否设置了 TULUN_LOG_TRACE 环境变量
         {
             return tulun::LOG_LEVEL::TRACE;
         }
@@ -25,8 +25,8 @@ namespace tulun
         }
     }
 
-    void defaultoutput(const std::string &msg)
-    {
+    void defaultoutput(const std::string &msg)//这个函数将接收到的日志字符串 `msg` 写入到标准输出 `stdout`
+    {//使用 `fwrite` 而不是 `printf`，因为 `fwrite` 对于二进制数据或不含格式化字符的字符串来说效率更高。
         size_t n = fwrite(msg.c_str(), sizeof(char), msg.size(), stdout);
     }
     void defaultflush()
