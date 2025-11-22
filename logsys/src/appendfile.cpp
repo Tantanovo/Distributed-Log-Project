@@ -39,19 +39,12 @@ namespace tulun
         buff_.reset();// reset() 会释放当前指向的内存，并将指针置为 nullptr。
                        // 在析构函数中，这一步不是必须的，但写出来可以让意图更清晰。
     };
-<<<<<<< HEAD
+
     void appendfile::append(const std::string &msg)//c++接口
     {
         append(msg.c_str(), msg.size());
     };
     void appendfile::append(const char *msg, const int len)//c接口
-
-    void appendfile::append(const std::string &msg)
-    {
-        append(msg.c_str(), msg.size());
-    };
-    void appendfile::append(const char *msg, const int len)
-
     {
         size_t n = write(msg, len); // 记录已经成功写入的字节数
         size_t remain = len - n;// 计算剩余多少字节需要写入

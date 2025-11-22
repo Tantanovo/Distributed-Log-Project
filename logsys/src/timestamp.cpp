@@ -33,10 +33,8 @@ namespace tulun
         time_t mir = micro_ % kmircoperseconds;
         struct tm t_tm;
         localtime_r(&sec, &t_tm);//时间转换 
-<<<<<<< HEAD
-        // gmtime_r(&sec,&t_tm);//格林尼治
 
-        // gmtime_r(&sec,&t_tm);
+        // gmtime_r(&sec,&t_tm);//格林尼治
 
         int len = sprintf(buff, "%04d/%02d/%02d-%02d:%02d:%02d", t_tm.tm_year + 1900,
                           t_tm.tm_mon + 1,
