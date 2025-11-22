@@ -4,11 +4,6 @@
 
 namespace tulun
 {
-    // class logger{
-    //     public:
-    // using outputfunc=std::function<void(const std::string &)>;
-    // using flushfunc=std::function<void(void)>;
-
     static tulun::LOG_LEVEL initloglevel()
     {
         if (::getenv("TULUN::LOG_TRACE"))//// 检查是否设置了 TULUN_LOG_TRACE 环境变量

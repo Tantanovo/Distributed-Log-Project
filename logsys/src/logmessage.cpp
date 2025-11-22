@@ -2,11 +2,6 @@
 #include "timestamp.hpp"
 namespace tulun
 {
-    // class logmessage{
-    //     std::string head_;
-    //     std::string test_;
-    //     tulun::LOG_LEVEL level_;
-
     logmessage::logmessage(const tulun::LOG_LEVEL &level,
                            const std::string &filename,
                            const std::string &funcname,

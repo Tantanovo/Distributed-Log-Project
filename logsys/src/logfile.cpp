@@ -6,24 +6,6 @@
 #include <sstream>
 namespace tulun
 {
-    // class logfile
-    // {
-    // // private:
-    //     const std::string basename_;
-    //     const size_t rollsize_;   // 超过回滚大小产生新日志
-    //     const int flushinterval_; // 3s
-    //     const int checkeventn_;   // 25~15
-    //     int count_;
-
-    // private:
-    //     time_t start0fperiod_;
-    //     time_t lastroll_;
-    //     time_t lastflush_;
-    //     static const int krollperseconds_ = 60 * 60 * 24;
-
-    // private:
-    //     std::unique_ptr<std::mutex> mutex_;
-    //     std::unique_ptr<tulun::appendfile> file_;
     pid_t pid()// 获取当前进程 ID
     {
         return ::getpid();

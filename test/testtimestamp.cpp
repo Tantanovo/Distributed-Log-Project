@@ -6,9 +6,11 @@
 #include<appendfile.hpp>
 #include <iostream>
 #include"logfile.hpp"
+#include"asynlogging.hpp"
 using namespace std;
+tulun::asynlogging appfile("yhping");
 
-tulun::appendfile appfile("yhping.log");
+//tulun::appendfile appfile("yhping.log");
 void appoutput(const std::string &msg){
     appfile.append(msg);
 }
@@ -33,11 +35,13 @@ void func()
     LOG_TRACE << "out func";
 }
 int main()
-{   tulun::logger::setoutput(appoutput);
+{   appfile.start();
+    tulun::logger::setoutput(appoutput);
     tulun::logger::setflush(appflush);
     tulun::logger::setloglevel(tulun::LOG_LEVEL::TRACE);
            
          LOG_TRACE<< "in main";
+         func();
          LOG_TRACE<< "exit main";
 
     return 0;
